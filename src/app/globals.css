@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* ---- Theme tokens (light & dark) ---- */
+:root,
+:root[data-theme="light"] {
+  --background: #ffffff;      /* page bg */
+  --foreground: #0a0a0a;      /* main text */
+  --muted: #4b5563;           /* secondary text (gray-600) */
+  --link-color: #0a0a0a;
+  --link-hover: #93e1d8;
+  --sidebar-bg: linear-gradient(135deg, #93e1d8 0%, #ffa69e 100%); /* light */
+  
+  --card-bg: #ffffff;         /* card bg in light */
+  --card-border: rgba(0,0,0,.08);
+
+  --brand-tiffany: #93e1d8;
+  --brand-melon: #ffa69e;
+  --brand-raspberry: #aa4465;
+  --brand-murrey: #861657;
+
+  /* Button tokens (light mode) */
+  --btn-primary-bg: #93e1d8;         /* Tiffany Blue */
+  --btn-primary-text: #0a0a0a;
+  --btn-primary-border: rgba(0,0,0,.18);
+
+  --btn-secondary-bg: #ffa69e;       /* Melon */
+  --btn-secondary-text: #0a0a0a;
+  --btn-secondary-border: rgba(0,0,0,.18);
+
+  --btn-shadow: 0 6px 16px rgba(0,0,0,.12);
+  --btn-shadow-hover: 0 10px 22px rgba(0,0,0,.18);
+}
+
+:root[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --muted: #cbd5e1;          /* slate-300 for secondary text */
+  --link-color: #93e1d8;     /* Tiffany Blue */
+  --link-hover: #ffa69e;     /* Melon */
+  --sidebar-bg: rgba(10, 10, 10, 0.95); /* subtle near-black for dark */
+
+  --card-bg: #111213;         /* subtle near-black card */
+  --card-border: rgba(255,255,255,.12);
+
+  /* Button tokens (dark mode) */
+  --btn-primary-bg: #58d1c3;         /* deeper Tiffany */
+  --btn-primary-text: #0a0a0a;
+  --btn-primary-border: rgba(255,255,255,.18);
+
+  --btn-secondary-bg: #ffb8b1;       /* lighter Melon */
+  --btn-secondary-text: #0a0a0a;
+  --btn-secondary-border: rgba(255,255,255,.18);
+
+  --btn-shadow: 0 6px 16px rgba(0,0,0,.6);
+  --btn-shadow-hover: 0 10px 22px rgba(0,0,0,.65);
+}
+
+/* ---- Base applying theme tokens ---- */
+html, body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ---- Sensible defaults ---- */
+a { color: var(--brand-tiffany); transition: color .2s ease; }
+a:hover { color: var(--brand-melon); }
+h1, h2, h3, h4 { color: var(--brand-raspberry); font-weight: 700; }
+
+/* Utility classes so hover works without JS */
+.link {
+  color: var(--link-color);
+  transition: color .2s ease;
+}
+.link:hover {
+  color: var(--link-hover);
+}
+
+/* ---------- Reusable button utilities ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .75rem 1.25rem;           /* ~py-3 px-5 */
+  border-radius: .75rem;             /* ~rounded-xl */
+  font-weight: 600;
+  line-height: 1;
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+  box-shadow: var(--btn-shadow);
+  text-align: center;
+}
+
+.btn:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--btn-primary-bg) 60%, #000 40%);
+  outline-offset: 2px;
+}
+
+.btn:hover { transform: translateY(-1px); box-shadow: var(--btn-shadow-hover); }
+.btn:active { transform: translateY(0); filter: brightness(.98); }
+
+/* Variants */
+.btn-primary {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: 1px solid var(--btn-primary-border);
+}
+
+.btn-secondary {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 1px solid var(--btn-secondary-border);
+}
