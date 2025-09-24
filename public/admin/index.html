@@ -1,26 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
     <title>Content Manager</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Optional: keep this for invite/login anywhere on site -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
-    <!-- Decap CMS -->
-    <script src="https://unpkg.com/decap-cms-app@^3.0.0/dist/decap-cms.js"></script>
-
-    <!-- Netlify Identity Widget here-->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- Decap CMS UMD build (pin to a stable version) -->
+    <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
 
     <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", (user) => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
+      // Force manual init so we control when/how CMS boots
+      window.CMS_MANUAL_INIT = true;
+
+      // Tiny helper to surface any init errors in the console
+      function safeInit(config) {
+        try {
+          console.log("[CMS] Initializing Decap with inline config…", config);
+          CMS.init({ config });
+        } catch (e) {
+          console.error("[CMS] Init failed:", e);
+        }
+      }
+
+      // Minimal, known-good config. (You can re-expand once we see the UI.)
+      const inlineConfig = {
+        backend: { name: "git-gateway", branch: "main" },
+        media_folder: "public/uploads",
+        public_folder: "/uploads",
+        publish_mode: "simple",
+
+        collections: [
+          {
+            name: "projects",
+            label: "Projects",
+            folder: "content/projects",
+            create: true,
+            slug: "{{slug}}",
+            fields: [
+              { label: "Title", name: "title", widget: "string" },
+              { label: "Date", name: "date", widget: "datetime" },
+              { label: "Summary", name: "summary", widget: "text" },
+              {
+                label: "Category",
+                name: "category",
+                widget: "select",
+                options: ["Data Analytics", "Data Science"],
+              },
+              {
+                label: "Images",
+                name: "images",
+                widget: "list",
+                field: { label: "Image", name: "image", widget: "image" },
+              },
+              { label: "YouTube URL", name: "youtube", widget: "string", required: false },
+              { label: "GitHub Link", name: "github", widget: "string", required: false },
+              { label: "Body", name: "body", widget: "markdown", required: false }
+            ],
+          },
+          {
+            name: "resume",
+            label: "Resume",
+            files: [
+              {
+                file: "content/resume.md",
+                label: "Resume Overview",
+                name: "resume",
+                fields: [
+                  { label: "Overview", name: "body", widget: "markdown" },
+                  { label: "Resume PDF", name: "resumePdf", widget: "file" }
+                ],
+              },
+            ],
+          },
+          {
+            name: "skills",
+            label: "Skills",
+            folder: "content/skills",
+            create: true,
+            slug: "{{slug}}",
+            fields: [
+              { label: "Category", name: "category", widget: "string" },
+              {
+                label: "Skills",
+                name: "items",
+                widget: "list",
+                field: { label: "Skill", name: "skill", widget: "string" },
+              },
+            ],
+          },
+          {
+            name: "settings",
+            label: "Settings",
+            files: [
+              {
+                file: "content/settings.json",
+                label: "Global Settings",
+                name: "settings",
+                fields: [
+                  { label: "SEO Title", name: "seoTitle", widget: "string" },
+                  { label: "SEO Description", name: "seoDescription", widget: "text" },
+                  { label: "Email", name: "email", widget: "string" },
+                  { label: "LinkedIn", name: "linkedin", widget: "string", required: false },
+                  { label: "Upwork", name: "upwork", widget: "string", required: false },
+                  { label: "Fiverr", name: "fiverr", widget: "string", required: false },
+                  { label: "Jobberman", name: "jobberman", widget: "string", required: false },
+                  { label: "GitHub", name: "github", widget: "string", required: false },
+                  { label: "YouTube", name: "youtube", widget: "string", required: false }
+                ],
+              },
+            ],
+          },
+        ],
+      };
+
+      // Initialize once CMS script is loaded
+      if (window.CMS) {
+        safeInit(inlineConfig);
+      } else {
+        window.addEventListener("load", () => safeInit(inlineConfig));
       }
     </script>
   </body>
