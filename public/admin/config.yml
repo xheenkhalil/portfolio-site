@@ -2,68 +2,65 @@ backend:
   name: git-gateway
   branch: main
 
-# Enable local testing & Vercel deploys
-local_backend: true
+media_folder: "public/uploads"
+public_folder: "/uploads"
 
-media_folder: "public/uploads" # where uploaded images go in repo
-public_folder: "/uploads" # how those images are accessed in the site
-
-publish_mode: editorial_workflow # keep drafts & reviews before publishing
+publish_mode: editorial_workflow
 
 collections:
-- name: "projects"
-  label: "Projects"
-  folder: "content/projects"
-  create: true
-  slug: "{{slug}}"
-  fields:
-  - { label: "Title", name: "title", widget: "string" }
-  - { label: "Date", name: "date", widget: "datetime" }
-  - { label: "Summary", name: "summary", widget: "text" }
-  - { label: "Category", name: "category", widget: "select", options: [ "Data Analytics", "Data Science" ] }
-  - label: "Images"
-    name: "images"
-    widget: "list"
-    field: { label: "Image", name: "image", widget: "image" }
-  - { label: "YouTube URL", name: "youtube", widget: "string", required: false }
-  - { label: "GitHub Link", name: "github", widget: "string", required: false }
-  - { label: "Body", name: "body", widget: "markdown", required: false }
-
-- name: "resume"
-  label: "Resume"
-  files:
-  - file: "content/resume.md"
-    label: "Resume Overview"
-    name: "resume"
+  - name: "projects"
+    label: "Projects"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
     fields:
-    - { label: "Overview", name: "body", widget: "markdown" }
-    - { label: "Resume PDF", name: "resumePdf", widget: "file" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Category", name: "category", widget: "select", options: ["Data Analytics", "Data Science"] }
+      - label: "Images"
+        name: "images"
+        widget: "list"
+        field: { label: "Image", name: "image", widget: "image" }
+      - { label: "YouTube URL", name: "youtube", widget: "string", required: false }
+      - { label: "GitHub Link", name: "github", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
 
-- name: "skills"
-  label: "Skills"
-  folder: "content/skills"
-  create: true
-  slug: "{{slug}}"
-  fields:
-  - { label: "Category", name: "category", widget: "string" }
-  - label: "Skills"
-    name: "items"
-    widget: "list"
-    field: { label: "Skill", name: "skill", widget: "string" }
+  - name: "resume"
+    label: "Resume"
+    files:
+      - file: "content/resume.md"
+        label: "Resume Overview"
+        name: "resume"
+        fields:
+          - { label: "Overview", name: "body", widget: "markdown" }
+          - { label: "Resume PDF", name: "resumePdf", widget: "file" }
 
-- name: "settings"
-  label: "Settings"
-  files:
-  - file: "content/settings.json"
-    label: "Global Settings"
-    name: "settings"
+  - name: "skills"
+    label: "Skills"
+    folder: "content/skills"
+    create: true
+    slug: "{{slug}}"
     fields:
-    - { label: "SEO Title", name: "seoTitle", widget: "string" }
-    - { label: "SEO Description", name: "seoDescription", widget: "text" }
-    - { label: "Email", name: "email", widget: "string" }
-    - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
-    - { label: "Upwork", name: "upwork", widget: "string", required: false }
-    - { label: "Fiverr", name: "fiverr", widget: "string", required: false }
-    - { label: "Jobberman", name: "jobberman", widget: "string", required: false }
-    - { label: "GitHub", name: "github", widget: "string", required: false }
-    - { label: "YouTube", name: "youtube", widget: "string", required: false }
+      - { label: "Category", name: "category", widget: "string" }
+      - label: "Skills"
+        name: "items"
+        widget: "list"
+        field: { label: "Skill", name: "skill", widget: "string" }
+
+  - name: "settings"
+    label: "Settings"
+    files:
+      - file: "content/settings.json"
+        label: "Global Settings"
+        name: "settings"
+        fields:
+          - { label: "SEO Title", name: "seoTitle", widget: "string" }
+          - { label: "SEO Description", name: "seoDescription", widget: "text" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+          - { label: "Upwork", name: "upwork", widget: "string", required: false }
+          - { label: "Fiverr", name: "fiverr", widget: "string", required: false }
+          - { label: "Jobberman", name: "jobberman", widget: "string", required: false }
+          - { label: "GitHub", name: "github", widget: "string", required: false }
+          - { label: "YouTube", name: "youtube", widget: "string", required: false }
