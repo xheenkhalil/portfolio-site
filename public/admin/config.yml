@@ -1,7 +1,6 @@
 backend:
-  name: github
-  repo: xheenkhalil/portfolio-site
-  branch: main # branch to commit changes
+  name: git-gateway
+  branch: main
 
 # Enable local testing & Vercel deploys
 local_backend: true
