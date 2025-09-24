@@ -3,6 +3,9 @@ backend:
   repo: xheenkhalil/portfolio-site/portfolio-site # 👈 replace with your GitHub repo (user/repo)
   branch: main # branch to commit changes
 
+# Enable local testing & Vercel deploys
+local_backend: true
+
 media_folder: "public/uploads" # where uploaded images go in repo
 public_folder: "/uploads" # how those images are accessed in the site
 
