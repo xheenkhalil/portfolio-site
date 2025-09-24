@@ -1,6 +1,7 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script"; // ✅ import Script
 import "./globals.css";
 import Footer from "@/components/Footer";
 
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   title: "Portfolio – Moses Thomas",
   description:
     "Personal portfolio of Moses Thomas – Data Scientist, Data Analyst, Writer, Creator",
-  metadataBase: new URL("https://mosesthomas.netlify.app"), // 👈 updated from placeholder
+  metadataBase: new URL("https://mosesthomas.netlify.app"),
   icons: {
     icon: [
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "Moses Thomas Portfolio",
     images: [
       {
-        url: "/og-image.png", // place this file in /public
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Moses Thomas Portfolio Preview",
@@ -60,10 +61,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* ✅ Netlify Identity Widget (required for /admin login + invite) */}
-        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
-        {/* Set theme before first paint (no FOUC) */}
+        {/* Theme script */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -79,9 +77,15 @@ export default function RootLayout({
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* ✅ Netlify Identity Widget script */}
+        <Script
+          src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+          strategy="afterInteractive"
+        />
+
         <div className="flex flex-col min-h-screen">
           <main className="flex-grow">{children}</main>
-          <Footer /> {/* Always shows at the bottom */}
+          <Footer />
         </div>
       </body>
     </html>
