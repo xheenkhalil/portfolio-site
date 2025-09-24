@@ -12,7 +12,7 @@ export default function Home() {
       <SEO
         title="Moses Thomas | Data Scientist & Writer"
         description="Portfolio showcasing data science, data analytics, and storytelling projects."
-        url="https://yourdomain.com"
+        url="https://mosesthomas.netlify.app"
       />
       <main className="min-h-screen">
         <HeaderBar />
