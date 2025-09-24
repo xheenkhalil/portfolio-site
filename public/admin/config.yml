@@ -1,11 +1,12 @@
 backend:
-  name: git-gateway
-  branch: main
+  name: github
+  repo: xheenkhalil/portfolio-site/portfolio-site # 👈 replace with your GitHub repo (user/repo)
+  branch: main # branch to commit changes
 
-media_folder: "public/uploads"
-public_folder: "/uploads"
+media_folder: "public/uploads" # where uploaded images go in repo
+public_folder: "/uploads" # how those images are accessed in the site
 
-publish_mode: editorial_workflow
+publish_mode: editorial_workflow # keep drafts & reviews before publishing
 
 collections:
 - name: "projects"

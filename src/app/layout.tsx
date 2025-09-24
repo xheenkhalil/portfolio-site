@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Portfolio – Moses Thomas",
   description:
     "Personal portfolio of Moses Thomas – Data Scientist, Data Analyst, Writer, Creator",
-  metadataBase: new URL("https://yourdomain.com"), // change to your real domain or vercel URL
+  metadataBase: new URL("https://yourdomain.com"),
   icons: {
     icon: [
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
