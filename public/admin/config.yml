@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: xheenkhalil/portfolio-site/portfolio-site # 👈 replace with your GitHub repo (user/repo)
+  repo: xheenkhalil/portfolio-site
   branch: main # branch to commit changes
 
 # Enable local testing & Vercel deploys
