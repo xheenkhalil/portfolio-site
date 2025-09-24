@@ -16,7 +16,13 @@ export default function Home() {
       />
       <main className="min-h-screen">
         <HeaderBar />
-        <Sidebar/>
+        <Sidebar
+          trigger={
+            <button className="flex items-center gap-2 px-4 py-2 bg-melon text-dark_black font-semibold rounded-lg shadow hover:bg-raspberry_rose transition">
+              ☰ Menu
+            </button>
+          }
+        />
         <ThemeToggle />
         <Hero />
         <RecentProjects />   {/* <-- shows the grid in the area you circled */}
@@ -25,4 +31,3 @@ export default function Home() {
     </>
   );
 }
-
