@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/Footer"; 
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Portfolio – Moses Thomas",
   description:
     "Personal portfolio of Moses Thomas – Data Scientist, Data Analyst, Writer, Creator",
-  metadataBase: new URL("https://yourdomain.com"),
+  metadataBase: new URL("https://mosesthomas.netlify.app"), // 👈 updated from placeholder
   icons: {
     icon: [
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Moses Thomas | Portfolio",
     description:
       "Explore the portfolio of Moses Thomas – showcasing projects in data science, analytics, and writing.",
-    url: "https://yourdomain.com",
+    url: "https://mosesthomas.netlify.app",
     siteName: "Moses Thomas Portfolio",
     images: [
       {
@@ -60,6 +60,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* ✅ Netlify Identity Widget (required for /admin login + invite) */}
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
         {/* Set theme before first paint (no FOUC) */}
         <script
           dangerouslySetInnerHTML={{
@@ -71,7 +74,7 @@ export default function RootLayout({
     document.documentElement.setAttribute('data-theme', theme);
   } catch (e) {}
 })();
-`,
+            `,
           }}
         />
       </head>
