@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://yourdomain.com/sitemap.xml",
+    sitemap: "https://mosesthomas.vercel.app/sitemap.xml",
   };
 }
 
