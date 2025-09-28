@@ -10,8 +10,8 @@ export default function Home() {
     <>
       <SEO
         title="Moses Thomas | Data Scientist & Writer"
-        description="Portfolio showcasing data science, data analytics, and storytelling projects."
-        url="https://mosesthomas.netlify.app"
+        description="Portfolio of Moses showcasing data science, data analytics, and storytelling projects."
+        url="https://mosesthomas.vercel.app"
       />
       <main className="min-h-screen">
         <HeaderBar />
