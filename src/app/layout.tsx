@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "Portfolio – Moses Thomas",
   description:
     "Personal portfolio of Moses Thomas – Data Scientist, Data Analyst, Writer, Creator",
-  metadataBase: new URL("https://mosesthomas.netlify.app"),
+  metadataBase: new URL("https://mosesthomas.vercel.app"),
   icons: {
     icon: [
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Moses Thomas | Portfolio",
     description:
       "Explore the portfolio of Moses Thomas – showcasing projects in data science, analytics, and writing.",
-    url: "https://mosesthomas.netlify.app",
+    url: "https://mosesthomas.vercel.app",
     siteName: "Moses Thomas Portfolio",
     images: [
       {
