@@ -75,14 +75,14 @@ export default function Sidebar({ trigger }: { trigger: ReactNode }) {
               Skills
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/moses-thomas-61195434a/"
               target="_blank"
               rel="noopener noreferrer"
               className="link text-lg font-medium"
             >
               LinkedIn
             </a>
-            <a href="mailto:youremail@example.com" className="link text-lg font-medium">
+            <a href="mailto:engrzyfer@gmail.com.com" className="link text-lg font-medium">
               Send a Message
             </a>
           </nav>
