@@ -24,7 +24,7 @@ export default function ThemeToggle() {
     <button
       onClick={toggle}
       aria-label="Toggle color theme"
-      className="fixed top-4 right-20 z-50 px-3 py-2 rounded-lg font-semibold
+      className="fixed top-4 right-4 z-50 px-2 py-1 rounded-md font-medium
                  bg-[#ffa69e] text-[#0a0a0a] hover:opacity-90 transition
                  shadow"
       style={{ border: "1px solid rgba(255,255,255,0.15)" }}
