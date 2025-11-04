@@ -1,6 +1,5 @@
 "use client";
 import { useState, ReactNode } from "react";
-import Link from "next/link"; // <-- Added Link for type-correctness, see note*
 
 export default function Sidebar({ trigger }: { trigger: ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -28,11 +27,18 @@ export default function Sidebar({ trigger }: { trigger: ReactNode }) {
         <div
           className="h-full flex flex-col backdrop-blur-md transition-colors duration-300"
           style={{
-            // This line is correct and will use the variables from globals.css
             background: "var(--sidebar-bg, rgba(20,20,20,0.9))",
           }}
         >
-          {/* --- <style jsx global> BLOCK REMOVED --- */}
+          {/* --- Dynamic color support --- */}
+          <style>{`
+            :root {
+              --sidebar-bg: rgba(255, 255, 255, 0.8);
+            }
+            [data-theme="dark"] {
+              --sidebar-bg: rgba(15, 15, 15, 0.9);
+            }
+          `}</style>
 
           {/* Close Button */}
           <button
@@ -49,10 +55,7 @@ export default function Sidebar({ trigger }: { trigger: ReactNode }) {
             {[
               { href: "/projects/data-analytics", label: "Data Analytics" },
               { href: "/projects/data-science", label: "Data Science" },
-              {
-                href: "/projects/web-development",
-                label: "Fullstack Development",
-              },
+              { href: "/projects/web-development", label: "Fullstack Development" },
               { href: "/projects", label: "Explore Projects" },
               { href: "/resume", label: "Resume / CV" },
               { href: "/skills", label: "Skills" },
@@ -63,13 +66,12 @@ export default function Sidebar({ trigger }: { trigger: ReactNode }) {
               },
               { href: "mailto:engrzyfer@gmail.com", label: "Send a Message" },
             ].map((item) => (
-              // *Note: Using <Link> for internal links is better for performance
-              <Link
+              <a
                 key={item.label}
                 href={item.href}
                 target={item.external ? "_blank" : "_self"}
                 rel={item.external ? "noopener noreferrer" : undefined}
-                onClick={() => setOpen(false)} // This works on <Link> too
+                onClick={() => setOpen(false)}
                 className="
                   text-lg font-medium px-4 py-2 rounded-lg transition-all
                   hover:bg-[var(--brand-tiffany,rgba(0,255,255,0.15))]
@@ -79,7 +81,7 @@ export default function Sidebar({ trigger }: { trigger: ReactNode }) {
                 style={{ color: "var(--foreground)" }}
               >
                 {item.label}
-              </Link>
+              </a>
             ))}
           </nav>
         </div>

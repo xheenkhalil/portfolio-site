@@ -1,25 +1,28 @@
-import HeaderBar from "@/components/HeaderBar";
+// src/app/page.tsx
+
+// --- IMPORTS ---
+// We only import the components that are unique to this page.
+// HeaderBar, Footer, and ThemeToggle are loaded by layout.tsx or HeaderBar.
 import Hero from "@/components/Hero";
 import HireMePanel from "@/components/HireMePanel";
-import SEO from "@/components/SEO";
 import RecentProjects from "@/components/RecentProjects";
-import ThemeToggle from "@/components/ThemeToggle";
+
+// We DO NOT import SEO, HeaderBar, or ThemeToggle here.
 
 export default function Home() {
   return (
     <>
-      <SEO
-        title="Moses Thomas | Data Scientist & Writer"
-        description="Portfolio of Moses showcasing data science, data analytics, and storytelling projects."
-        url="https://mosesthomas.vercel.app"
-      />
-      <main className="min-h-screen">
-        <HeaderBar />
-        <ThemeToggle />
-        <Hero />
-        <RecentProjects />   {/* <-- shows the grid in the area you circled */}
-        <HireMePanel />
-      </main>
+      {/* No <SEO> component needed. The 'metadata' in layout.tsx handles this.
+        No <HeaderBar> component needed. layout.tsx handles this.
+        No <ThemeToggle> component needed. HeaderBar handles this.
+      */}
+      
+      {/* Your layout.tsx <main> tag already wraps this content.
+        So we can just return the page-specific components.
+      */}
+      <Hero />
+      <RecentProjects />
+      <HireMePanel />
     </>
   );
 }

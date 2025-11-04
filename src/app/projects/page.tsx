@@ -25,15 +25,16 @@ export default function ProjectsPage() {
           title="Spotify Dashboard"
           summary="A BI dashboard built with Power BI, Excel, and Python scraping Spotify data."
           image="/uploads/project1.jpg"
-          github="https://github.com/yourusername/spotify-dashboard"
+          github="https://github.com/xheenkhalil/Spotify-Dashboard"
           youtube="https://youtube.com"
         />
         <ProjectCard
-          title="HR Analytics Dashboard"
-          summary="Analyzed employee attrition and KPIs using Power BI and SQL."
-          image="/uploads/project3.jpg"
-          github="https://github.com/yourusername/hr-analytics-dashboard"
+          title="Exams Site"
+          summary="A full-featured exams website built with React, Node.js, Typecript, Vite and Postgres."
+          image="/uploads/zyntra.png"
+          github="https://github.com/xheenkhalil/zyntra_"
           youtube="https://youtube.com"
+          visit="https://zyntraexams.vercel.app"
         />
 
         {/* Data Science Projects */}
@@ -41,15 +42,24 @@ export default function ProjectsPage() {
           title="Medical Diagnosis Model"
           summary="Machine learning model predicting diseases from symptoms with 200+ inputs."
           image="/uploads/project2.jpg"
-          github="https://github.com/yourusername/med-diagnosis"
+          github="https://github.com/xheenkhalil/med-diagnosis"
           youtube="https://youtube.com"
         />
         <ProjectCard
-          title="Diengine Scraper"
-          summary="A data scraping engine built with Python, Celery tasks, and FastAPI."
-          image="/uploads/project3.jpg"
-          github="https://github.com/yourusername/diengine"
+          title="Movie Recommendation System"
+          summary="A simple movie recommendation system built with HTML5/Tailwind CSS and Vanilla Javascript."
+          image="/uploads/cinemuse.png"
+          github="https://github.com/xheenkhalil/cinemuse"
           youtube="https://youtube.com"
+          visit="https://cinemusemovies.netlify.app"
+        />
+        <ProjectCard
+          title="Portfolio Site"
+          summary="Built with Next.js and Typescript for speed and ease of management."
+          image="/uploads/portfolio.png"
+          github="https://github.com/xheenkhalil/portfolio-site"
+          youtube="https://youtube.com"
+          visit="https://mosesthomas.vercel.app"
         />
 
         {/* More projects can be added here */}

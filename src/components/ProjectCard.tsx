@@ -7,6 +7,7 @@ interface ProjectCardProps {
   image: string;
   github?: string;
   youtube?: string;
+  visit?: string;
 }
 
 export default function ProjectCard({
@@ -15,6 +16,7 @@ export default function ProjectCard({
   image,
   github,
   youtube,
+  visit,
 }: ProjectCardProps) {
   return (
     <div
@@ -60,6 +62,16 @@ export default function ProjectCard({
               className="bg-tiffany_blue text-dark_black px-4 py-2 rounded font-semibold hover:bg-murrey transition"
             >
               YouTube
+            </a>
+          )}
+          {visit && (
+            <a
+              href={visit}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-light_spring_green text-dark_black px-4 py-2 rounded font-semibold hover:bg-spring_green transition"
+            >
+              Visit
             </a>
           )}
         </div>

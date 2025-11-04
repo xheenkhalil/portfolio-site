@@ -25,7 +25,7 @@ export default function DataSciencePage() {
           title="Medical Diagnosis Model"
           summary="Machine learning model predicting diseases from symptoms with 200+ inputs."
           image="/uploads/project2.jpg"
-          github="https://github.com/yourusername/med-diagnosis"
+          github="https://github.com/xheenkhalil/med-diagnosis"
           youtube="https://youtube.com"
         />
         <ProjectCard

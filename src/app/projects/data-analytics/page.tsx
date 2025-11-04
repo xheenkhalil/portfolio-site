@@ -25,14 +25,14 @@ export default function DataAnalyticsPage() {
           title="Spotify Dashboard"
           summary="A BI dashboard built with Power BI, Excel, and Python scraping Spotify data."
           image="/uploads/project1.jpg"
-          github="https://github.com/yourusername/spotify-dashboard"
+          github="https://github.com/xheenkhalil/Spotify-Dashboard"
           youtube="https://youtube.com"
         />
         <ProjectCard
-          title="HR Analytics Dashboard"
-          summary="Analyzed employee attrition and KPIs using Power BI and SQL."
-          image="/uploads/project3.jpg"
-          github="https://github.com/yourusername/hr-analytics-dashboard"
+          title="Walmart Analytics Dashboard"
+          summary="SQL + Python analysis of product/category performance with actionable recommendations."
+          image="/uploads/walmart.png"
+          github="https://github.com/xheenkhalil/walmart-store-analysis"
           youtube="https://youtube.com"
         />
       </div>

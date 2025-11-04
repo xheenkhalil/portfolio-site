@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import BackButton from "@/components/BackButton";
 
 export default function ResumePage() {
@@ -13,6 +12,7 @@ export default function ResumePage() {
         <BackButton />
       </div>
 
+      {/* Content */}
       <div className="max-w-3xl mx-auto text-center">
         <h1
           className="text-4xl font-bold mb-6"
@@ -22,7 +22,7 @@ export default function ResumePage() {
         </h1>
 
         <p
-          className="text-lg mb-8"
+          className="text-lg mb-10"
           style={{ color: "var(--brand-melon)" }}
         >
           Passionate Data Scientist and Writer with experience in building
@@ -30,13 +30,21 @@ export default function ResumePage() {
           connect emotionally.
         </p>
 
-        <Link
+        {/* ✅ Download Button */}
+        <a
           href="/uploads/resume.pdf"
-          target="_blank"
-          className="bg-melon text-dark_black font-semibold px-6 py-3 rounded-lg shadow hover:bg-raspberry_rose transition"
+          download
+          className="
+            inline-block
+            bg-melon text-dark_black font-semibold
+            px-8 py-3 rounded-xl shadow-md
+            hover:bg-raspberry_rose hover:shadow-lg
+            hover:scale-[1.03] active:scale-[0.98]
+            transition-all duration-200 ease-out
+          "
         >
-          Download Full Resume (PDF)
-        </Link>
+          📄 Download Full Resume (PDF)
+        </a>
       </div>
     </main>
   );

@@ -11,7 +11,7 @@ const recent = [
     summary:
       "Interactive BI dashboard (Power BI + Python) for streaming trends & artist insights.",
     image: "/uploads/project1.jpg",
-    github: "https://github.com/yourusername/spotify-dashboard",
+    github: "https://github.com/xheenkhalil/Spotify-Dashboard",
     youtube: "https://youtube.com",
   },
   {
@@ -19,16 +19,25 @@ const recent = [
     summary:
       "ML classification pipeline (scikit-learn) with feature engineering and model explainability.",
     image: "/uploads/project2.jpg",
-    github: "https://github.com/yourusername/med-diagnosis",
+    github: "https://github.com/xheenkhalil/med-diagnosis",
     youtube: "https://youtube.com",
   },
   {
-    title: "Amazon Store Analysis",
+    title: "Walmart Store Analysis",
     summary:
       "SQL + Python analysis of product/category performance with actionable recommendations.",
-    image: "/uploads/project3.jpg",
-    github: "https://github.com/yourusername/amazon-store-analysis",
+    image: "/uploads/walmart.png",
+    github: "https://github.com/xheenkhalil/walmart-store-analysis",
     youtube: "https://youtube.com",
+  },
+  {
+    title: "Movie Recommendation System",
+    summary:
+      "A simple movie recommendation system built with HTML5/Tailwind CSS and Vanilla Javascript.",
+    image: "/uploads/cinemuse.png",
+    github: "https://github.com/xheenkhalil/cinemuse",
+    youtube: "https://youtube.com",
+    visit: "https://cinemusemovies.netlify.app"
   },
 ];
 
@@ -50,6 +59,7 @@ export default function RecentProjects() {
               image={p.image}
               github={p.github}
               youtube={p.youtube}
+              visit={p.visit}
             />
           ))}
         </div>
