@@ -7,6 +7,15 @@ import ProjectCard from "@/components/ProjectCard";
  */
 const recent = [
   {
+    title: "Vydra - All Video Downloader",
+    summary:
+      "An all video downloader made with python and next.js. Analyze URL and fetch video/Audio information and allows user to download.",
+    image: "/uploads/vydra.png",
+    github: "https://github.com/xheenkhalil/vydra",
+    youtube: "https://youtube.com",
+    visit: "https://vydra-downloader.vercel.app"
+  },
+  {
     title: "Spotify Analytics Dashboard",
     summary:
       "Interactive BI dashboard (Power BI + Python) for streaming trends & artist insights.",

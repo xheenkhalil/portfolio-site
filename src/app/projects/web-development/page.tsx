@@ -45,7 +45,14 @@ export default function DataSciencePage() {
           youtube="https://youtube.com"
           visit="https://zyntraexams.vercel.app"
         />
-
+        <ProjectCard
+          title= "Vydra - All Video Downloader"
+          summary= "An all video downloader made with Python and Next.js. Analyze URL and fetch video/Audio information and allows user to download."
+          image= "/uploads/vydra.png"
+          github= "https://github.com/xheenkhalil/vydra"
+          youtube= "https://youtube.com"
+          visit= "https://vydra-downloader.vercel.app"
+        />
       </div>
     </main>
   );
