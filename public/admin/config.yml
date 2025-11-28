@@ -20,13 +20,14 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Summary", name: "summary", widget: "text" }
-      - { label: "Category", name: "category", widget: "select", options: ["Data Analytics", "Data Science"] }
+      - { label: "Category", name: "category", widget: "select", options: ["Data Analytics", "Data Science", "Web Development"] }
       - label: "Images"
         name: "images"
         widget: "list"
         field: { label: "Image", name: "image", widget: "image" }
       - { label: "YouTube URL", name: "youtube", widget: "string", required: false }
       - { label: "GitHub Link", name: "github", widget: "string", required: false }
+      - { label: "Visit Link", name: "visit", widget: "string", required: false }
       - { label: "Body", name: "body", widget: "markdown", required: false }
 
   - name: "resume"

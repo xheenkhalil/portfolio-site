@@ -4,7 +4,20 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaChevronDown, FaBars, FaTimes, FaArrowRight } from "react-icons/fa";
+import {
+    FaChevronDown,
+    FaBars,
+    FaTimes,
+    FaArrowRight,
+    FaChartBar,
+    FaBrain,
+    FaLaptopCode,
+    FaLayerGroup,
+    FaFileAlt,
+    FaTools,
+    FaLinkedin,
+    FaEnvelope
+} from "react-icons/fa";
 import ThemeToggle from "./ThemeToggle";
 
 interface NavChild {
@@ -12,6 +25,7 @@ interface NavChild {
     href: string;
     desc: string;
     external?: boolean;
+    icon: React.ElementType;
 }
 
 interface NavLink {
@@ -25,18 +39,18 @@ const navLinks: NavLink[] = [
         label: "Projects",
         href: "/projects",
         children: [
-            { label: "Data Analytics", href: "/projects/data-analytics", desc: "Insights from data" },
-            { label: "Data Science", href: "/projects/data-science", desc: "ML & AI models" },
-            { label: "Fullstack Dev", href: "/projects/web-development", desc: "Web applications" },
-            { label: "View All", href: "/projects", desc: "Browse all work" },
+            { label: "Data Analytics", href: "/projects/data-analytics", desc: "Insights from data", icon: FaChartBar },
+            { label: "Data Science", href: "/projects/data-science", desc: "ML & AI models", icon: FaBrain },
+            { label: "Fullstack Dev", href: "/projects/web-development", desc: "Web applications", icon: FaLaptopCode },
+            { label: "View All", href: "/projects", desc: "Browse all work", icon: FaLayerGroup },
         ],
     },
     {
         label: "Expertise",
         href: "/resume",
         children: [
-            { label: "Resume / CV", href: "/resume", desc: "Professional background" },
-            { label: "Skills", href: "/skills", desc: "Technical proficiency" },
+            { label: "Resume / CV", href: "/resume", desc: "Professional background", icon: FaFileAlt },
+            { label: "Skills", href: "/skills", desc: "Technical proficiency", icon: FaTools },
         ],
     },
     {
@@ -47,8 +61,8 @@ const navLinks: NavLink[] = [
         label: "Connect",
         href: "#",
         children: [
-            { label: "LinkedIn", href: "https://www.linkedin.com/in/moses-thomas-61195434a/", desc: "Professional network", external: true },
-            { label: "Email", href: "mailto:engrzyfer@gmail.com", desc: "Get in touch", external: true },
+            { label: "LinkedIn", href: "https://www.linkedin.com/in/moses-thomas-61195434a/", desc: "Professional network", external: true, icon: FaLinkedin },
+            { label: "Email", href: "mailto:engrzyfer@gmail.com", desc: "Get in touch", external: true, icon: FaEnvelope },
         ],
     },
 ];
@@ -107,7 +121,7 @@ export default function Navbar() {
                                         className="absolute top-full left-1/2 -translate-x-1/2 pt-4"
                                     >
                                         <div
-                                            className={`p-6 rounded-2xl shadow-2xl border backdrop-blur-xl overflow-hidden ${link.label === "Projects" ? "w-[800px] grid grid-cols-2 gap-8" : "w-72"}`}
+                                            className={`p-6 rounded-2xl shadow-2xl border backdrop-blur-xl overflow-hidden ${link.label === "Projects" ? "w-[800px] grid grid-cols-2 gap-8" : "w-80"}`}
                                             style={{
                                                 background: "var(--card-bg)",
                                                 borderColor: "var(--card-border)",
@@ -124,17 +138,22 @@ export default function Navbar() {
                                                         href={child.href}
                                                         target={child.external ? "_blank" : undefined}
                                                         rel={child.external ? "noopener noreferrer" : undefined}
-                                                        className="group p-3 rounded-xl hover:bg-[var(--brand-tiffany)]/10 transition-all duration-200 flex items-center justify-between"
+                                                        className="group p-3 rounded-xl hover:bg-[var(--brand-tiffany)]/10 transition-all duration-200 flex items-start gap-4"
                                                     >
-                                                        <div>
-                                                            <div className="font-bold text-base group-hover:text-[var(--brand-murrey)] transition-colors">
-                                                                {child.label}
+                                                        <div className="p-2 rounded-lg bg-[var(--brand-tiffany)]/20 text-[var(--brand-raspberry)] group-hover:scale-110 transition-transform">
+                                                            <child.icon size={20} />
+                                                        </div>
+                                                        <div className="flex-1">
+                                                            <div className="flex items-center justify-between">
+                                                                <div className="font-bold text-base group-hover:text-[var(--brand-murrey)] transition-colors">
+                                                                    {child.label}
+                                                                </div>
+                                                                <FaArrowRight className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[var(--brand-murrey)]" size={12} />
                                                             </div>
                                                             <div className="text-sm text-[var(--muted)] mt-0.5">
                                                                 {child.desc}
                                                             </div>
                                                         </div>
-                                                        <FaArrowRight className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[var(--brand-murrey)]" size={12} />
                                                     </Link>
                                                 ))}
                                             </div>
@@ -229,9 +248,10 @@ export default function Navbar() {
                                                     key={child.label}
                                                     href={child.href}
                                                     onClick={() => setMobileOpen(false)}
-                                                    className="text-base font-medium hover:text-[var(--brand-melon)] transition-colors"
+                                                    className="flex items-center gap-3 text-base font-medium hover:text-[var(--brand-melon)] transition-colors"
                                                     style={{ color: "var(--foreground)" }}
                                                 >
+                                                    <child.icon size={16} className="text-[var(--muted)]" />
                                                     {child.label}
                                                 </Link>
                                             ))}
