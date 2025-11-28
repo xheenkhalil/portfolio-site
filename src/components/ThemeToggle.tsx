@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [mounted, setMounted] = useState(false);
 
   // Initialize from DOM (set by inline script) to avoid mismatch
   useEffect(() => {
+    setMounted(true);
     const current = document.documentElement.getAttribute("data-theme");
     if (current === "dark" || current === "light") setTheme(current);
   }, []);
@@ -20,16 +23,16 @@ export default function ThemeToggle() {
     } catch {}
   };
 
+  if (!mounted) return null; // Avoid hydration mismatch
+
   return (
     <button
       onClick={toggle}
       aria-label="Toggle color theme"
-      className="fixed top-4 right-4 z-50 px-2 py-1 rounded-md font-medium
-                 bg-[#ffa69e] text-[#0a0a0a] hover:opacity-90 transition
-                 shadow"
-      style={{ border: "1px solid rgba(255,255,255,0.15)" }}
+      className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+      style={{ color: "var(--foreground)" }}
     >
-      {theme === "dark" ? "Light" : "Dark"} Mode
+      {theme === "dark" ? <FaSun size={20} /> : <FaMoon size={20} />}
     </button>
   );
 }

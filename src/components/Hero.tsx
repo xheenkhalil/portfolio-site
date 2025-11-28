@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
@@ -10,40 +11,60 @@ export default function Hero() {
     >
       {/* Container aligned with rest of content */}
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:gap-1 lg:gap-1">
-        
+
         {/* --- Left Column: Profile Image --- */}
-        <div className="flex justify-center md:justify-start items-center md:w-1/3">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="flex justify-center md:justify-start items-center md:w-1/3"
+        >
           <Image
             src="/profile.jpg"
             alt="Profile Picture"
             width={220}
             height={220}
-            className="rounded-full border-4 border-tiffany_blue shadow-lg"
+            className="rounded-full border-4 border-tiffany_blue shadow-lg hover:scale-105 transition-transform duration-300"
           />
-        </div>
+        </motion.div>
 
         {/* --- Right Column: Text Section --- */}
         <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left md:w-2/3 mt-8 md:mt-0">
-          <h1 className="text-4xl md:text-6xl font-bold text-tiffany_blue mb-2">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-4xl md:text-6xl font-bold text-tiffany_blue mb-2"
+          >
             Moses Thomas
-          </h1>
-          <p className="text-lg md:text-2xl text-melon mb-6">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="text-lg md:text-2xl text-melon mb-6"
+          >
             • Developer • Data Engineer • Writer
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row gap-4"
+          >
             <Link
               href="/projects"
-              className="btn btn-primary bg-tiffany_blue text-black px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition"
+              className="btn btn-primary bg-tiffany_blue text-black px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition hover:scale-105 active:scale-95"
             >
               Explore Projects
             </Link>
             <Link
               href="/hire"
-              className="btn btn-secondary bg-melon text-black px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition"
+              className="btn btn-secondary bg-melon text-black px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition hover:scale-105 active:scale-95"
             >
               Hire Me
             </Link>
-          </div>
+          </motion.div>
         </div>
 
       </div>

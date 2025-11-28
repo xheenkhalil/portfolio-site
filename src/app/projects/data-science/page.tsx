@@ -1,18 +1,15 @@
-"use client";
+
 import ProjectCard from "@/components/ProjectCard";
-import BackButton from "@/components/BackButton";
+import { getAllProjects } from "@/lib/projects";
 
 export default function DataSciencePage() {
+  const projects = getAllProjects().filter((p) => p.category === "Data Science");
+
   return (
     <main
       className="min-h-screen px-6 py-16"
       style={{ background: "var(--background)", color: "var(--foreground)" }}
     >
-      {/* Back button at the top */}
-      <div className="mb-8">
-        <BackButton />
-      </div>
-
       <h1
         className="text-4xl font-bold mb-12 text-center"
         style={{ color: "var(--brand-raspberry)" }}
@@ -27,6 +24,7 @@ export default function DataSciencePage() {
           image="/uploads/project2.jpg"
           github="https://github.com/xheenkhalil/med-diagnosis"
           youtube="https://youtube.com"
+          slug="medical-diagnosis-model"
         />
         <ProjectCard
           title="Diengine Scraper"
@@ -34,6 +32,7 @@ export default function DataSciencePage() {
           image="/uploads/project3.jpg"
           github="https://github.com/yourusername/diengine"
           youtube="https://youtube.com"
+          slug="diengine-scraper"
         />
       </div>
     </main>

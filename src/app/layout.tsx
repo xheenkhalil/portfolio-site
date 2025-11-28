@@ -1,10 +1,10 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script"; 
+import Script from "next/script";
 import "./globals.css";
 import Footer from "@/components/Footer";
-import HeaderBar from "@/components/HeaderBar"; // <-- MODIFICATION: Import HeaderBar
+import Navbar from "@/components/Navbar"; // <-- MODIFICATION: Import Navbar
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -85,7 +85,7 @@ export default function RootLayout({
         />
 
         <div className="flex flex-col min-h-screen">
-          <HeaderBar /> {/* <-- MODIFICATION: Add HeaderBar component */}
+          <Navbar /> {/* <-- MODIFICATION: Add Navbar component */}
           <main className="flex-grow">{children}</main>
           <Footer />
         </div>

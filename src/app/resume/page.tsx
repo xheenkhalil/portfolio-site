@@ -1,16 +1,10 @@
 "use client";
-import BackButton from "@/components/BackButton";
-
 export default function ResumePage() {
   return (
     <main
       className="min-h-screen px-6 py-16"
       style={{ background: "var(--background)", color: "var(--foreground)" }}
     >
-      {/* Back button */}
-      <div className="mb-8">
-        <BackButton />
-      </div>
 
       {/* Content */}
       <div className="max-w-3xl mx-auto text-center">

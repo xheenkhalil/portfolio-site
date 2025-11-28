@@ -17,33 +17,43 @@ export default function ProjectCard({
   github,
   youtube,
   visit,
-}: ProjectCardProps) {
+  slug,
+}: ProjectCardProps & { slug?: string }) {
   return (
     <div
-      className="rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition border"
+      className="rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition border flex flex-col h-full"
       style={{
         background: "var(--card-bg)",
         borderColor: "var(--card-border)",
       }}
     >
-      <Image
-        src={image}
-        alt={title}
-        width={400}
-        height={250}
-        className="w-full h-48 object-cover"
-      />
-      <div className="p-4">
+      <div className="relative h-48 w-full">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover"
+        />
+      </div>
+      <div className="p-4 flex flex-col flex-grow">
         <h3
           className="text-xl font-bold mb-2"
           style={{ color: "var(--brand-raspberry)" }}
         >
           {title}
         </h3>
-        <p className="mb-4" style={{ color: "var(--muted)" }}>
+        <p className="mb-4 flex-grow" style={{ color: "var(--muted)" }}>
           {summary}
         </p>
-        <div className="flex gap-3">
+        <div className="flex gap-3 flex-wrap mt-auto">
+          {slug && (
+            <a
+              href={`/projects/${slug}`}
+              className="bg-brand-murrey text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition"
+            >
+              Details
+            </a>
+          )}
           {github && (
             <a
               href={github}

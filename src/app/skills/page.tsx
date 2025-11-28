@@ -1,5 +1,4 @@
 "use client";
-import BackButton from "@/components/BackButton";
 import {
   FaPython,
   FaDatabase,
@@ -27,11 +26,6 @@ export default function SkillsPage() {
       className="min-h-screen px-6 py-16"
       style={{ background: "var(--background)", color: "var(--foreground)" }}
     >
-      {/* Back button */}
-      <div className="mb-8">
-        <BackButton />
-      </div>
-
       <div className="max-w-3xl mx-auto text-center">
         <h1
           className="text-4xl font-bold mb-6"

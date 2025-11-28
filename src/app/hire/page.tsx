@@ -1,5 +1,4 @@
 "use client";
-import BackButton from "@/components/BackButton";
 import { FaUpwork, FaYoutube } from "react-icons/fa6";
 import { SiFiverr } from "react-icons/si";
 import { MdWork } from "react-icons/md";
@@ -10,9 +9,6 @@ export default function HirePage() {
       className="min-h-screen px-6 py-16 flex flex-col items-center"
       style={{ background: "var(--background)", color: "var(--foreground)" }}
     >
-      <div className="self-start mb-8">
-        <BackButton />
-      </div>
 
       <h1
         className="text-4xl font-bold mb-12 text-center"

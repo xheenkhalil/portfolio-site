@@ -1,18 +1,15 @@
-"use client";
+
 import ProjectCard from "@/components/ProjectCard";
-import BackButton from "@/components/BackButton";
+import { getAllProjects } from "@/lib/projects";
 
 export default function DataAnalyticsPage() {
+  const projects = getAllProjects().filter((p) => p.category === "Data Analytics");
+
   return (
     <main
       className="min-h-screen px-6 py-16"
       style={{ background: "var(--background)", color: "var(--foreground)" }}
     >
-      {/* Back button at the top */}
-      <div className="mb-8">
-        <BackButton />
-      </div>
-
       <h1
         className="text-4xl font-bold mb-12 text-center"
         style={{ color: "var(--brand-murrey)" }}
@@ -27,6 +24,7 @@ export default function DataAnalyticsPage() {
           image="/uploads/project1.jpg"
           github="https://github.com/xheenkhalil/Spotify-Dashboard"
           youtube="https://youtube.com"
+          slug="spotify-dashboard"
         />
         <ProjectCard
           title="Walmart Analytics Dashboard"
@@ -34,6 +32,7 @@ export default function DataAnalyticsPage() {
           image="/uploads/walmart.png"
           github="https://github.com/xheenkhalil/walmart-store-analysis"
           youtube="https://youtube.com"
+          slug="walmart-analytics-dashboard"
         />
       </div>
     </main>

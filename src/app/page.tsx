@@ -6,22 +6,25 @@
 import Hero from "@/components/Hero";
 import HireMePanel from "@/components/HireMePanel";
 import RecentProjects from "@/components/RecentProjects";
+import { getRecentProjects } from "@/lib/projects";
 
 // We DO NOT import SEO, HeaderBar, or ThemeToggle here.
 
-export default function Home() {
+export default async function Home() {
+  const recentProjects = getRecentProjects(3);
+
   return (
     <>
       {/* No <SEO> component needed. The 'metadata' in layout.tsx handles this.
         No <HeaderBar> component needed. layout.tsx handles this.
         No <ThemeToggle> component needed. HeaderBar handles this.
       */}
-      
+
       {/* Your layout.tsx <main> tag already wraps this content.
         So we can just return the page-specific components.
       */}
       <Hero />
-      <RecentProjects />
+      <RecentProjects projects={recentProjects} />
       <HireMePanel />
     </>
   );

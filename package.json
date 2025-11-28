@@ -6,10 +6,13 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "cms-proxy": "npx decap-server --port 8082"
   },
   "dependencies": {
     "decap-cms-app": "^3.8.3",
+    "framer-motion": "^12.23.24",
+    "gray-matter": "^4.0.3",
     "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",

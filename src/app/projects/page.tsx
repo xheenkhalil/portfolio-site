@@ -1,17 +1,14 @@
-"use client";
 import ProjectCard from "@/components/ProjectCard";
-import BackButton from "@/components/BackButton";
+import { getAllProjects } from "@/lib/projects";
 
 export default function ProjectsPage() {
+  const projects = getAllProjects();
+
   return (
     <main
       className="min-h-screen px-6 py-16"
       style={{ background: "var(--background)", color: "var(--foreground)" }}
     >
-      <div className="mb-8">
-        <BackButton />
-      </div>
-
       <h1
         className="text-4xl font-bold mb-12 text-center"
         style={{ color: "var(--brand-murrey)" }}
@@ -20,57 +17,18 @@ export default function ProjectsPage() {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {/* Analytics Projects */}
-        <ProjectCard
-          title="Spotify Dashboard"
-          summary="A BI dashboard built with Power BI, Excel, and Python scraping Spotify data."
-          image="/uploads/project1.jpg"
-          github="https://github.com/xheenkhalil/Spotify-Dashboard"
-          youtube="https://youtube.com"
-        />
-        <ProjectCard
-          title="Exams Site"
-          summary="A full-featured exams website built with React, Node.js, Typecript, Vite and Postgres."
-          image="/uploads/zyntra.png"
-          github="https://github.com/xheenkhalil/zyntra_"
-          youtube="https://youtube.com"
-          visit="https://zyntraexams.vercel.app"
-        />
-
-        {/* Data Science Projects */}
-        <ProjectCard
-          title="Medical Diagnosis Model"
-          summary="Machine learning model predicting diseases from symptoms with 200+ inputs."
-          image="/uploads/project2.jpg"
-          github="https://github.com/xheenkhalil/med-diagnosis"
-          youtube="https://youtube.com"
-        />
-        <ProjectCard
-          title="Movie Recommendation System"
-          summary="A simple movie recommendation system built with HTML5/Tailwind CSS and Vanilla Javascript."
-          image="/uploads/cinemuse.png"
-          github="https://github.com/xheenkhalil/cinemuse"
-          youtube="https://youtube.com"
-          visit="https://cinemusemovies.netlify.app"
-        />
-        <ProjectCard
-          title="Portfolio Site"
-          summary="Built with Next.js and Typescript for speed and ease of management."
-          image="/uploads/portfolio.png"
-          github="https://github.com/xheenkhalil/portfolio-site"
-          youtube="https://youtube.com"
-          visit="https://mosesthomas.vercel.app"
-        />
-        <ProjectCard
-          title= "Vydra - All Video Downloader"
-          summary= "An all video downloader made with Python and Next.js. Analyze URL and fetch video/Audio information and allows user to download."
-          image= "/uploads/vydra.png"
-          github= "https://github.com/xheenkhalil/vydra"
-          youtube= "https://youtube.com"
-          visit= "https://vydra-downloader.vercel.app"
-        />
-
-        {/* More projects can be added here */}
+        {projects.map((p) => (
+          <ProjectCard
+            key={p.slug}
+            title={p.title}
+            summary={p.summary}
+            image={p.image}
+            github={p.github}
+            youtube={p.youtube}
+            visit={p.visit}
+            slug={p.slug}
+          />
+        ))}
       </div>
     </main>
   );
