@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaChevronDown, FaBars, FaTimes } from "react-icons/fa";
+import { FaChevronDown, FaBars, FaTimes, FaArrowRight } from "react-icons/fa";
 import ThemeToggle from "./ThemeToggle";
 
 interface NavChild {
@@ -16,7 +17,7 @@ interface NavChild {
 interface NavLink {
     label: string;
     href: string;
-    children: NavChild[];
+    children?: NavChild[];
 }
 
 const navLinks: NavLink[] = [
@@ -39,14 +40,25 @@ const navLinks: NavLink[] = [
         ],
     },
     {
+        label: "Contact",
+        href: "/contact",
+    },
+    {
         label: "Connect",
-        href: "#contact",
+        href: "#",
         children: [
             { label: "LinkedIn", href: "https://www.linkedin.com/in/moses-thomas-61195434a/", desc: "Professional network", external: true },
             { label: "Email", href: "mailto:engrzyfer@gmail.com", desc: "Get in touch", external: true },
         ],
     },
 ];
+
+const featuredProject = {
+    title: "Vydra Downloader",
+    category: "Web Development",
+    image: "/uploads/vydra.png",
+    href: "/projects/vydra-downloader"
+};
 
 export default function Navbar() {
     const [hovered, setHovered] = useState<string | null>(null);
@@ -59,14 +71,14 @@ export default function Navbar() {
                 background: "color-mix(in oklab, var(--background) 85%, transparent)",
             }}
         >
-            <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
                 {/* Logo */}
-                <Link href="/" className="text-2xl font-bold tracking-tight" style={{ color: "var(--brand-raspberry)" }}>
+                <Link href="/" className="text-3xl font-bold tracking-tight" style={{ color: "var(--brand-raspberry)" }}>
                     Moses<span style={{ color: "var(--brand-tiffany)" }}>.</span>
                 </Link>
 
                 {/* Desktop Nav */}
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden md:flex items-center gap-10">
                     {navLinks.map((link) => (
                         <div
                             key={link.label}
@@ -76,47 +88,84 @@ export default function Navbar() {
                         >
                             <Link
                                 href={link.href}
-                                className="flex items-center gap-1 font-medium py-4 transition-colors hover:text-[var(--brand-melon)]"
+                                className="flex items-center gap-2 text-lg font-medium py-6 transition-colors hover:text-[var(--brand-melon)]"
                                 style={{ color: "var(--foreground)" }}
                             >
                                 {link.label}
-                                <FaChevronDown size={10} className={`transition-transform ${hovered === link.label ? "rotate-180" : ""}`} />
+                                {link.children && (
+                                    <FaChevronDown size={12} className={`transition-transform duration-300 ${hovered === link.label ? "rotate-180" : ""}`} />
+                                )}
                             </Link>
 
                             <AnimatePresence>
-                                {hovered === link.label && (
+                                {hovered === link.label && link.children && (
                                     <motion.div
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: 10 }}
-                                        transition={{ duration: 0.2 }}
-                                        className="absolute top-full left-1/2 -translate-x-1/2 pt-2"
+                                        initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, y: 15, scale: 0.95 }}
+                                        transition={{ duration: 0.2, ease: "easeOut" }}
+                                        className="absolute top-full left-1/2 -translate-x-1/2 pt-4"
                                     >
                                         <div
-                                            className="w-64 p-4 rounded-xl shadow-xl border backdrop-blur-xl"
+                                            className={`p-6 rounded-2xl shadow-2xl border backdrop-blur-xl overflow-hidden ${link.label === "Projects" ? "w-[800px] grid grid-cols-2 gap-8" : "w-72"}`}
                                             style={{
                                                 background: "var(--card-bg)",
                                                 borderColor: "var(--card-border)",
                                             }}
                                         >
-                                            <div className="flex flex-col gap-2">
+                                            {/* Links Column */}
+                                            <div className="flex flex-col gap-3">
+                                                <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--muted)] mb-2">
+                                                    {link.label === "Projects" ? "Categories" : "Menu"}
+                                                </h3>
                                                 {link.children.map((child) => (
                                                     <Link
                                                         key={child.label}
                                                         href={child.href}
                                                         target={child.external ? "_blank" : undefined}
                                                         rel={child.external ? "noopener noreferrer" : undefined}
-                                                        className="group p-2 rounded-lg hover:bg-[var(--brand-tiffany)]/10 transition-colors"
+                                                        className="group p-3 rounded-xl hover:bg-[var(--brand-tiffany)]/10 transition-all duration-200 flex items-center justify-between"
                                                     >
-                                                        <div className="font-semibold text-sm group-hover:text-[var(--brand-murrey)] transition-colors">
-                                                            {child.label}
+                                                        <div>
+                                                            <div className="font-bold text-base group-hover:text-[var(--brand-murrey)] transition-colors">
+                                                                {child.label}
+                                                            </div>
+                                                            <div className="text-sm text-[var(--muted)] mt-0.5">
+                                                                {child.desc}
+                                                            </div>
                                                         </div>
-                                                        <div className="text-xs text-[var(--muted)]">
-                                                            {child.desc}
-                                                        </div>
+                                                        <FaArrowRight className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[var(--brand-murrey)]" size={12} />
                                                     </Link>
                                                 ))}
                                             </div>
+
+                                            {/* Featured Project Column (Only for Projects) */}
+                                            {link.label === "Projects" && (
+                                                <div className="relative group cursor-pointer">
+                                                    <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--muted)] mb-4">
+                                                        Featured Project
+                                                    </h3>
+                                                    <Link href={featuredProject.href} className="block relative h-64 rounded-xl overflow-hidden border border-white/10 shadow-lg">
+                                                        <Image
+                                                            src={featuredProject.image}
+                                                            alt={featuredProject.title}
+                                                            fill
+                                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                                        />
+                                                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
+                                                            <span className="text-[var(--brand-melon)] text-xs font-bold uppercase mb-1">
+                                                                {featuredProject.category}
+                                                            </span>
+                                                            <h4 className="text-white text-xl font-bold mb-1">
+                                                                {featuredProject.title}
+                                                            </h4>
+                                                            <div className="flex items-center gap-2 text-white/80 text-sm font-medium group-hover:text-[var(--brand-tiffany)] transition-colors">
+                                                                View Case Study <FaArrowRight size={12} />
+                                                            </div>
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            )}
                                         </div>
                                     </motion.div>
                                 )}
@@ -126,11 +175,11 @@ export default function Navbar() {
                 </div>
 
                 {/* Right Actions */}
-                <div className="hidden md:flex items-center gap-4">
+                <div className="hidden md:flex items-center gap-6">
                     <ThemeToggle />
                     <Link
                         href="/resume"
-                        className="px-4 py-2 rounded-lg font-semibold text-sm transition-transform hover:-translate-y-0.5"
+                        className="px-6 py-2.5 rounded-full font-bold text-sm transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-raspberry_rose/20"
                         style={{
                             background: "var(--brand-raspberry)",
                             color: "white",
@@ -166,26 +215,34 @@ export default function Navbar() {
                         <div className="p-6 flex flex-col gap-6">
                             {navLinks.map((link) => (
                                 <div key={link.label}>
-                                    <div className="font-bold mb-2 text-[var(--brand-raspberry)]">{link.label}</div>
-                                    <div className="flex flex-col gap-2 pl-4 border-l-2 border-[var(--card-border)]">
-                                        {link.children.map((child) => (
-                                            <Link
-                                                key={child.label}
-                                                href={child.href}
-                                                onClick={() => setMobileOpen(false)}
-                                                className="text-sm font-medium hover:text-[var(--brand-melon)] transition-colors"
-                                                style={{ color: "var(--foreground)" }}
-                                            >
-                                                {child.label}
-                                            </Link>
-                                        ))}
-                                    </div>
+                                    <Link
+                                        href={link.href}
+                                        onClick={() => setMobileOpen(false)}
+                                        className="font-bold text-lg mb-2 text-[var(--brand-raspberry)] block"
+                                    >
+                                        {link.label}
+                                    </Link>
+                                    {link.children && (
+                                        <div className="flex flex-col gap-3 pl-4 border-l-2 border-[var(--card-border)]">
+                                            {link.children.map((child) => (
+                                                <Link
+                                                    key={child.label}
+                                                    href={child.href}
+                                                    onClick={() => setMobileOpen(false)}
+                                                    className="text-base font-medium hover:text-[var(--brand-melon)] transition-colors"
+                                                    style={{ color: "var(--foreground)" }}
+                                                >
+                                                    {child.label}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
                             ))}
                             <Link
                                 href="/resume"
                                 onClick={() => setMobileOpen(false)}
-                                className="w-full py-3 rounded-lg font-bold text-center mt-4"
+                                className="w-full py-4 rounded-xl font-bold text-center mt-4 text-lg shadow-lg"
                                 style={{
                                     background: "var(--brand-raspberry)",
                                     color: "white",

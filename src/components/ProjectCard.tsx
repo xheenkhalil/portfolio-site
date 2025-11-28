@@ -1,5 +1,7 @@
 "use client";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { FaGithub, FaYoutube, FaExternalLinkAlt, FaInfoCircle } from "react-icons/fa";
 
 interface ProjectCardProps {
   title: string;
@@ -8,6 +10,7 @@ interface ProjectCardProps {
   github?: string;
   youtube?: string;
   visit?: string;
+  slug?: string;
 }
 
 export default function ProjectCard({
@@ -18,40 +21,48 @@ export default function ProjectCard({
   youtube,
   visit,
   slug,
-}: ProjectCardProps & { slug?: string }) {
+}: ProjectCardProps) {
   return (
-    <div
-      className="rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition border flex flex-col h-full"
-      style={{
-        background: "var(--card-bg)",
-        borderColor: "var(--card-border)",
-      }}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      whileHover={{ y: -10 }}
+      transition={{ duration: 0.4 }}
+      className="group relative flex flex-col h-full rounded-2xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm hover:border-white/20 hover:bg-white/10 transition-all duration-300 shadow-xl"
     >
-      <div className="relative h-48 w-full">
+      {/* Image Container */}
+      <div className="relative h-56 w-full overflow-hidden">
         <Image
           src={image}
           alt={title}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark_black/90 to-transparent opacity-60" />
       </div>
-      <div className="p-4 flex flex-col flex-grow">
+
+      {/* Content */}
+      <div className="flex flex-col flex-grow p-6">
         <h3
-          className="text-xl font-bold mb-2"
-          style={{ color: "var(--brand-raspberry)" }}
+          className="text-2xl font-bold mb-3 line-clamp-1"
+          style={{ color: "var(--brand-tiffany)" }}
         >
           {title}
         </h3>
-        <p className="mb-4 flex-grow" style={{ color: "var(--muted)" }}>
+        <p className="text-gray-300 mb-6 line-clamp-3 flex-grow text-sm leading-relaxed">
           {summary}
         </p>
-        <div className="flex gap-3 flex-wrap mt-auto">
+
+        {/* Actions */}
+        <div className="flex gap-3 mt-auto">
           {slug && (
             <a
               href={`/projects/${slug}`}
-              className="bg-brand-murrey text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-tiffany_blue hover:text-dark_black transition-all duration-300"
+              title="View Details"
             >
-              Details
+              <FaInfoCircle size={18} />
             </a>
           )}
           {github && (
@@ -59,19 +70,10 @@ export default function ProjectCard({
               href={github}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-melon text-dark_black px-4 py-2 rounded font-semibold hover:bg-raspberry_rose transition"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-melon hover:text-dark_black transition-all duration-300"
+              title="GitHub Repo"
             >
-              GitHub
-            </a>
-          )}
-          {youtube && (
-            <a
-              href={youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-tiffany_blue text-dark_black px-4 py-2 rounded font-semibold hover:bg-murrey transition"
-            >
-              YouTube
+              <FaGithub size={18} />
             </a>
           )}
           {visit && (
@@ -79,13 +81,25 @@ export default function ProjectCard({
               href={visit}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-light_spring_green text-dark_black px-4 py-2 rounded font-semibold hover:bg-spring_green transition"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-spring_green hover:text-dark_black transition-all duration-300"
+              title="Live Site"
             >
-              Visit
+              <FaExternalLinkAlt size={16} />
+            </a>
+          )}
+          {youtube && (
+            <a
+              href={youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-raspberry_rose hover:text-dark_black transition-all duration-300"
+              title="Watch Demo"
+            >
+              <FaYoutube size={18} />
             </a>
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
