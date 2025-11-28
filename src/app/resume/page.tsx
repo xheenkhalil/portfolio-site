@@ -4,10 +4,10 @@ import { FaGraduationCap, FaCertificate, FaDownload, FaBriefcase } from "react-i
 
 const education = [
   {
-    degree: "B.Sc. Computer Science",
-    school: "University of Technology",
-    year: "2018 - 2022",
-    desc: "Focused on Software Engineering, Data Structures, and Algorithms. Graduated with First Class Honors.",
+    degree: "B.Tech Mathematics",
+    school: "Federal University of Technology",
+    year: "2018 - 2024",
+    desc: "Focused on Industrial Mathematics, Statistics, Software Engineering, Data Structures, and Algorithms.",
   },
 ];
 
@@ -20,12 +20,12 @@ const certifications = [
   {
     name: "AWS Certified Cloud Practitioner",
     issuer: "Amazon Web Services",
-    year: "2023",
+    year: "2024",
   },
   {
-    name: "Meta Front-End Developer Professional Certificate",
-    issuer: "Coursera",
-    year: "2022",
+    name: "Software Engineering Professional Certificate",
+    issuer: "PLP Academy",
+    year: "2024",
   },
 ];
 
@@ -33,13 +33,13 @@ const experience = [
   {
     role: "Freelance Fullstack Developer",
     company: "Self-Employed",
-    year: "2022 - Present",
+    year: "2024 - Present",
     desc: "Building modern web applications for clients using Next.js, React, and Node.js.",
   },
   {
     role: "Data Science Intern",
-    company: "Tech Solutions Ltd",
-    year: "2021 - 2022",
+    company: "Mentorness/CareerEX",
+    year: "2023 - 2024",
     desc: "Analyzed large datasets to extract actionable insights and built predictive models.",
   },
 ];

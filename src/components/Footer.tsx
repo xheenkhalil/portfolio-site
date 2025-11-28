@@ -83,7 +83,7 @@ export default function Footer() {
             <h3 className="font-bold text-lg mb-6" style={{ color: "var(--foreground)" }}>Services</h3>
             <ul className="space-y-4">
               <li className="text-[var(--muted)]">Data Analytics</li>
-              <li className="text-[var(--muted)]">Data Science</li>
+              <li className="text-[var(--muted)]">Data Science/ML/AI</li>
               <li className="text-[var(--muted)]">Web Development</li>
               <li className="text-[var(--muted)]">Technical Writing</li>
             </ul>

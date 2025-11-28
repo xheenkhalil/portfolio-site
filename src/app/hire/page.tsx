@@ -31,29 +31,28 @@ const platforms = [
 
 const education = [
   {
-    degree: "B.Sc. Computer Science",
-    school: "University of Technology",
-    year: "2018 - 2022",
+    degree: "B.Tech Mathematics",
+    school: "Federal University of Technology",
+    year: "2018 - 2024",
     desc: "Focused on Software Engineering and Data Structures.",
   },
-  // Add more if needed
 ];
 
 const certifications = [
   {
-    name: "Google Data Analytics Professional Certificate",
-    issuer: "Coursera",
-    year: "2023",
+    name: "Software Engineering Professional Certificate",
+    issuer: "PLP Academy",
+    year: "2024",
   },
   {
     name: "AWS Certified Cloud Practitioner",
     issuer: "Amazon Web Services",
-    year: "2023",
+    year: "2024",
   },
   {
-    name: "Meta Front-End Developer Professional Certificate",
-    issuer: "Coursera",
-    year: "2022",
+    name: "Software Engineering Professional Certificate",
+    issuer: "PLP Academy",
+    year: "2024",
   },
 ];
 
@@ -189,7 +188,7 @@ export default function HirePage() {
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <a
-                  href="mailto:youremail@example.com"
+                  href="mailto:engrzyfer@gmail.com"
                   className="flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-tiffany_blue text-dark_black font-bold hover:opacity-90 transition-transform hover:scale-105 active:scale-95"
                 >
                   <MdEmail size={20} />

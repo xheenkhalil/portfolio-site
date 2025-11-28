@@ -24,7 +24,6 @@ export function getAllProjects(): Project[] {
         const fullPath = path.join(projectsDirectory, fileName);
         const fileContents = fs.readFileSync(fullPath, "utf8");
         const matterResult = matter(fileContents);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const data = matterResult.data as any;
 
         let image = "/uploads/project1.jpg";
@@ -72,7 +71,6 @@ export function getProjectBySlug(slug: string): Project | null {
         const fullPath = path.join(projectsDirectory, `${slug}.md`);
         const fileContents = fs.readFileSync(fullPath, "utf8");
         const matterResult = matter(fileContents);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const data = matterResult.data as any;
 
         let image = "/uploads/project1.jpg";

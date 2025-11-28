@@ -66,7 +66,7 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <p className="text-sm text-gray-400">Phone</p>
-                                        <p className="text-lg font-medium">+123 456 7890</p>
+                                        <p className="text-lg font-medium">+234 8126 554 701</p>
                                     </div>
                                 </div>
                             </div>

@@ -26,7 +26,7 @@ const stackIcons = [
   { Icon: FaPython, color: "#3776AB" },
   { Icon: SiTypescript, color: "#3178C6" },
   { Icon: FaReact, color: "#61DAFB" },
-  { Icon: SiNextdotjs, color: "#000000" }, // Dark/Light mode handling might be needed, but black is standard
+  { Icon: SiNextdotjs, color: "#000000" },
   { Icon: SiTailwindcss, color: "#06B6D4" },
   { Icon: FaNodeJs, color: "#339933" },
   { Icon: SiPostgresql, color: "#4169E1" },

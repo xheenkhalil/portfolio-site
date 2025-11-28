@@ -1,6 +1,6 @@
 "use client";
 import { useState, ReactNode } from "react";
-import Link from "next/link"; // <-- Added Link for type-correctness, see note*
+import Link from "next/link";
 
 export default function Sidebar({ trigger }: { trigger: ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -63,7 +63,6 @@ export default function Sidebar({ trigger }: { trigger: ReactNode }) {
               },
               { href: "mailto:engrzyfer@gmail.com", label: "Send a Message" },
             ].map((item) => (
-              // *Note: Using <Link> for internal links is better for performance
               <Link
                 key={item.label}
                 href={item.href}
