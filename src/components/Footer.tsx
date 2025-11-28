@@ -21,7 +21,7 @@ export default function Footer() {
               Moses<span style={{ color: "var(--brand-tiffany)" }}>.</span>
             </Link>
             <p className="text-[var(--muted)] leading-relaxed">
-              Building data-driven applications and stunning web experiences. Let's turn your complex data into clear insights.
+              Building data-driven applications and stunning web experiences. Let&apos;s turn your complex data into clear insights.
             </p>
             <div className="flex items-center gap-4">
               <a
