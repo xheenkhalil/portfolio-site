@@ -1,8 +1,12 @@
 
 import ProjectCard from "@/components/ProjectCard";
+import { getAllProjects } from "@/lib/projects";
 
 export default function WebDevelopmentPage() {
-
+  const allProjects = getAllProjects();
+  const webDevProjects = allProjects.filter(
+    (project) => project.category === "Fullstack Web Development"
+  );
 
   return (
     <main
@@ -17,42 +21,18 @@ export default function WebDevelopmentPage() {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <ProjectCard
-          title="Portfolio Site"
-          summary="Built with Next.js and Typescript for speed and ease of management."
-          image="/uploads/portfolio.png"
-          github="https://github.com/xheenkhalil/portfolio-site"
-          youtube="https://youtube.com"
-          visit="https://mosesthomas.vercel.app"
-          slug="portfolio-site"
-        />
-        <ProjectCard
-          title="Movie Recommendation System"
-          summary="A simple movie recommendation system built with HTML5/Tailwind CSS and Vanilla Javascript."
-          image="/uploads/cinemuse.png"
-          github="https://github.com/xheenkhalil/cinemuse"
-          youtube="https://youtube.com"
-          visit="https://cinemusemovies.netlify.app"
-          slug="movie-recommendation-system"
-        />
-        <ProjectCard
-          title="Exams Site"
-          summary="A full-featured exams website built with React, Node.js, Typecript, Vite and Postgres."
-          image="/uploads/zyntra.png"
-          github="https://github.com/xheenkhalil/zyntra_"
-          youtube="https://youtube.com"
-          visit="https://zyntraexams.vercel.app"
-          slug="exams-site"
-        />
-        <ProjectCard
-          title="Vydra - All Video Downloader"
-          summary="An all video downloader made with Python and Next.js. Analyze URL and fetch video/Audio information and allows user to download."
-          image="/uploads/vydra.png"
-          github="https://github.com/xheenkhalil/vydra"
-          youtube="https://youtube.com"
-          visit="https://vydra-downloader.vercel.app"
-          slug="vydra-downloader"
-        />
+        {webDevProjects.map((project) => (
+          <ProjectCard
+            key={project.slug}
+            title={project.title}
+            summary={project.summary}
+            image={project.image}
+            github={project.github}
+            youtube={project.youtube}
+            visit={project.visit}
+            slug={project.slug}
+          />
+        ))}
       </div>
     </main>
   );

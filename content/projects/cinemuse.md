@@ -2,7 +2,7 @@
 title: "Movie Recommendation System"
 date: 2023-06-05T00:00:00Z
 summary: "A simple movie recommendation system built with HTML5/Tailwind CSS and Vanilla Javascript."
-category: "Data Science"
+category: "Fullstack Web Development"
 images:
   - image: "/uploads/cinemuse.png"
 github: "https://github.com/xheenkhalil/cinemuse"

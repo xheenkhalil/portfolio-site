@@ -2,7 +2,7 @@
 title: "Exams Site"
 date: 2023-10-15T00:00:00Z
 summary: "A full-featured exams website built with React, Node.js, Typecript, Vite and Postgres."
-category: "Data Science"
+category: "Fullstack Web Development"
 images:
   - image: "/uploads/zyntra.png"
 github: "https://github.com/xheenkhalil/zyntra_"

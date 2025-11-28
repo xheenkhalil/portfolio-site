@@ -20,7 +20,7 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Summary", name: "summary", widget: "text" }
-      - { label: "Category", name: "category", widget: "select", options: ["Data Analytics", "Data Science", "Web Development"] }
+      - { label: "Category", name: "category", widget: "select", options: ["Data Analytics", "Data Science", "Fullstack Web Development"] }
       - label: "Images"
         name: "images"
         widget: "list"
