@@ -3,77 +3,141 @@
 /* ---- Theme tokens (light & dark) ---- */
 :root,
 :root[data-theme="light"] {
-  --background: #ffffff;      /* page bg */
-  --foreground: #0a0a0a;      /* main text */
-  --muted: #4b5563;           /* secondary text (gray-600) */
-  --link-color: #0a0a0a;
-  --link-hover: #93e1d8;
-  --sidebar-bg: linear-gradient(135deg, #93e1d8 0%, #ffa69e 100%); /* light */
-  
-  --card-bg: #ffffff;         /* card bg in light */
-  --card-border: rgba(0,0,0,.08);
+  /* FIX 1: Off-white background creates depth for white cards */
+  --background: #f8fafc;
+  /* slate-50 */
 
+  /* FIX 2: Softer black for text to reduce eye strain */
+  --foreground: #0f172a;
+  /* slate-900 */
+
+  /* FIX 3: Actual Grey for muted text, not Navy Blue */
+  --muted: #64748b;
+  /* slate-500 */
+
+  /* FIX 4: TEXT contrast versions of your brand colors */
+  /* Tiffany Blue is too light for text. We use Teal-700 for links. */
+  --link-color: #0f766e;
+  --link-hover: #aa4465;
+  /* Raspberry for hover is good contrast */
+
+  --sidebar-bg: linear-gradient(135deg, #e0f2fe 0%, #f0fdfa 100%);
+  /* Softer gradient */
+
+  /* FIX 5: Cards are now pure white against the off-white page */
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.06);
+  /* Slightly subtler because bg provides contrast now */
+
+  /* Keep your Brand Colors for BUTTON BACKGROUNDS (where white text sits on top) */
   --brand-tiffany: #93e1d8;
   --brand-melon: #ffa69e;
   --brand-raspberry: #aa4465;
   --brand-murrey: #861657;
 
   /* Button tokens (light mode) */
-  --btn-primary-bg: #93e1d8;         /* Tiffany Blue */
-  --btn-primary-text: #0a0a0a;
-  --btn-primary-border: rgba(0,0,0,.18);
+  --btn-primary-bg: #2dd4bf;
+  /* Slightly darker teal (Teal-400) so white text is readable */
+  --btn-primary-text: #ffffff;
+  /* White text on buttons looks cleaner than black */
+  --btn-primary-border: transparent;
 
-  --btn-secondary-bg: #ffa69e;       /* Melon */
-  --btn-secondary-text: #0a0a0a;
-  --btn-secondary-border: rgba(0,0,0,.18);
+  --btn-secondary-bg: #fb7185;
+  /* Rose-400, darker than Melon for better contrast */
+  --btn-secondary-text: #ffffff;
+  --btn-secondary-border: transparent;
 
-  --btn-shadow: 0 6px 16px rgba(0,0,0,.12);
-  --btn-shadow-hover: 0 10px 22px rgba(0,0,0,.18);
+  /* Premium, diffused shadow for light mode */
+  --btn-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --btn-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 :root[data-theme="dark"] {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
-  --muted: #cbd5e1;          /* slate-300 for secondary text */
-  --link-color: #93e1d8;     /* Tiffany Blue */
-  --link-hover: #ffa69e;     /* Melon */
-  --sidebar-bg: rgba(10, 10, 10, 0.95); /* subtle near-black for dark */
+  /* Dark mode was mostly fine, just refining for consistency */
+  --background: #020617;
+  /* Slate-950 (Rich black) */
+  --foreground: #f8fafc;
+  /* Slate-50 */
+  --muted: #94a3b8;
+  /* Slate-400 */
 
-  --card-bg: #111213;         /* subtle near-black card */
-  --card-border: rgba(255,255,255,.12);
+  --link-color: #93e1d8;
+  /* Tiffany is great for text in DARK mode */
+  --link-hover: #ffa69e;
+  /* Melon */
+
+  --sidebar-bg: rgba(2, 6, 23, 0.95);
+
+  --card-bg: #0f172a;
+  /* Slate-900 */
+  --card-border: rgba(255, 255, 255, 0.1);
 
   /* Button tokens (dark mode) */
-  --btn-primary-bg: #58d1c3;         /* deeper Tiffany */
-  --btn-primary-text: #0a0a0a;
-  --btn-primary-border: rgba(255,255,255,.18);
+  --btn-primary-bg: #2dd4bf;
+  --btn-primary-text: #020617;
+  /* Black text on bright buttons in dark mode */
+  --btn-primary-border: rgba(255, 255, 255, 0.1);
 
-  --btn-secondary-bg: #ffb8b1;       /* lighter Melon */
-  --btn-secondary-text: #0a0a0a;
-  --btn-secondary-border: rgba(255,255,255,.18);
+  --btn-secondary-bg: #ffa69e;
+  --btn-secondary-text: #020617;
+  --btn-secondary-border: rgba(255, 255, 255, 0.1);
 
-  --btn-shadow: 0 6px 16px rgba(0,0,0,.6);
-  --btn-shadow-hover: 0 10px 22px rgba(0,0,0,.65);
+  --btn-shadow: 0 0 0 transparent;
+  /* Shadows often look muddy in dark mode, remove or keep subtle */
+  --btn-shadow-hover: 0 0 15px rgba(45, 212, 191, 0.3);
+  /* Glow effect instead of shadow */
 }
 
 /* ---- Base applying theme tokens ---- */
-html, body {
+html,
+body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  /* Smooth transition when toggling themes */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ---- Sensible defaults ---- */
-a { color: var(--brand-tiffany); transition: color .2s ease; }
-a:hover { color: var(--brand-melon); }
-h1, h2, h3, h4 { color: var(--brand-raspberry); font-weight: 700; }
-
-/* Utility classes so hover works without JS */
-.link {
+a {
   color: var(--link-color);
-  transition: color .2s ease;
+  font-weight: 500;
+  /* Add weight to make color pop */
+  transition: color 0.2s ease;
+  text-decoration: none;
 }
-.link:hover {
+
+a:hover {
   color: var(--link-hover);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--foreground);
+  /* Use Foreground for headings, or Brand Raspberry if preferred */
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  /* Tighten headings for modern look */
+}
+
+/* Utility classes */
+.text-brand {
+  color: var(--brand-raspberry);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+/* Card Class - Add this to your HTML elements */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
 }
 
 /* ---------- Reusable button utilities ---------- */
@@ -81,23 +145,26 @@ h1, h2, h3, h4 { color: var(--brand-raspberry); font-weight: 700; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: .5rem;
-  padding: .75rem 1.25rem;           /* ~py-3 px-5 */
-  border-radius: .75rem;             /* ~rounded-xl */
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
   font-weight: 600;
   line-height: 1;
-  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: var(--btn-shadow);
   text-align: center;
+  cursor: pointer;
 }
 
-.btn:focus-visible {
-  outline: 2px solid color-mix(in oklab, var(--btn-primary-bg) 60%, #000 40%);
-  outline-offset: 2px;
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--btn-shadow-hover);
 }
 
-.btn:hover { transform: translateY(-1px); box-shadow: var(--btn-shadow-hover); }
-.btn:active { transform: translateY(0); filter: brightness(.98); }
+.btn:active {
+  transform: translateY(0);
+  filter: brightness(0.95);
+}
 
 /* Variants */
 .btn-primary {
@@ -110,4 +177,31 @@ h1, h2, h3, h4 { color: var(--brand-raspberry); font-weight: 700; }
   background: var(--btn-secondary-bg);
   color: var(--btn-secondary-text);
   border: 1px solid var(--btn-secondary-border);
+}
+
+/* ---- FORCE OVERRIDES ---- */
+/* Force all paragraphs to use the readable 'muted' color we defined */
+p {
+  color: var(--muted) !important;
+}
+
+/* Force headings to use the high-contrast 'foreground' color */
+h3,
+h4,
+.text-xl,
+.font-bold {
+  color: var(--foreground) !important;
+}
+
+/* Fix the links/icons to be dark in light mode, light in dark mode */
+a,
+button {
+  color: var(--link-color) !important;
+}
+
+/* Specific fix for the "Recent Projects" heading if it's using a brand color */
+h1,
+h2 {
+  color: var(--brand-raspberry) !important;
+  /* Or use --foreground */
 }

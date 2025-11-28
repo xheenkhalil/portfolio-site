@@ -1,12 +1,12 @@
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
-      userAgent: "*",
-      allow: "/",
+      userAgent: '*',
+      allow: '/',
+      disallow: '/admin/',
     },
-    sitemap: "https://mosesthomas.vercel.app/sitemap.xml",
-  };
+    sitemap: 'https://mosesthomas.vercel.app/sitemap.xml',
+  }
 }
-

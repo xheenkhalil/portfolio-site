@@ -1,12 +1,35 @@
-import { getProjectBySlug, getAllProjects } from "@/lib/projects";
-import { notFound } from "next/navigation";
+import { getAllProjects, getProjectBySlug } from "@/lib/projects";
 import Image from "next/image";
+import { notFound } from "next/navigation";
+import { Metadata } from "next";
 
 export async function generateStaticParams() {
     const projects = getAllProjects();
     return projects.map((project) => ({
         slug: project.slug,
     }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const project = getProjectBySlug(slug);
+
+    if (!project) {
+        return {
+            title: "Project Not Found",
+        };
+    }
+
+    return {
+        title: project.title,
+        description: project.summary,
+        openGraph: {
+            title: `${project.title} | Moses Thomas`,
+            description: project.summary,
+            images: [project.image],
+            type: "article",
+        },
+    };
 }
 
 export default async function ProjectPage({
@@ -21,11 +44,29 @@ export default async function ProjectPage({
         notFound();
     }
 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        name: project.title,
+        description: project.summary,
+        image: project.image,
+        author: {
+            "@type": "Person",
+            name: "Moses Thomas",
+        },
+        codeRepository: project.github,
+        programmingLanguage: project.category,
+    };
+
     return (
         <main
-            className="min-h-screen px-6 py-16"
+            className="min-h-screen pt-24 pb-16 px-6"
             style={{ background: "var(--background)", color: "var(--foreground)" }}
         >
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <div className="max-w-4xl mx-auto">
                 <h1
                     className="text-4xl font-bold mb-6"
