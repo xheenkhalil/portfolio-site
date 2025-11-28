@@ -3,9 +3,7 @@ import ProjectCard from "@/components/ProjectCard";
 import { getAllProjects } from "@/lib/projects";
 
 export default function WebDevelopmentPage() {
-  const projects = getAllProjects().filter(
-    (p) => p.category === "Web Development"
-  );
+
 
   return (
     <main

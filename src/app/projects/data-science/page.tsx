@@ -3,7 +3,7 @@ import ProjectCard from "@/components/ProjectCard";
 import { getAllProjects } from "@/lib/projects";
 
 export default function DataSciencePage() {
-  const projects = getAllProjects().filter((p) => p.category === "Data Science");
+
 
   return (
     <main
