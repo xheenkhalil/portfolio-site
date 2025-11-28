@@ -1,7 +1,8 @@
 ---
-category: "Programming"
+category: Programming
 items:
-  - skill: "Python"
-  - skill: "SQL"
-  - skill: "Machine Learning"
+  - skill: Python
+  - skill: SQL
+  - skill: Machine Learning
+  - Fullstack Web Development
 ---
