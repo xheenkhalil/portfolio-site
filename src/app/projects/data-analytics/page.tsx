@@ -1,6 +1,6 @@
 
 import ProjectCard from "@/components/ProjectCard";
-import { getAllProjects } from "@/lib/projects";
+
 
 export default function DataAnalyticsPage() {
 

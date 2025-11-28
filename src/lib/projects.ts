@@ -17,6 +17,18 @@ export interface Project {
     body: string;
 }
 
+interface ProjectFrontmatter {
+    title?: string;
+    date?: string;
+    summary?: string;
+    category?: string;
+    image?: string;
+    images?: (string | { image: string })[];
+    youtube?: string;
+    github?: string;
+    visit?: string;
+}
+
 export function getAllProjects(): Project[] {
     const fileNames = fs.readdirSync(projectsDirectory);
     const allProjectsData = fileNames.map((fileName) => {
@@ -24,7 +36,7 @@ export function getAllProjects(): Project[] {
         const fullPath = path.join(projectsDirectory, fileName);
         const fileContents = fs.readFileSync(fullPath, "utf8");
         const matterResult = matter(fileContents);
-        const data = matterResult.data as any;
+        const data = matterResult.data as ProjectFrontmatter;
 
         let image = "/uploads/project1.jpg";
         if (data.image) {
@@ -71,7 +83,7 @@ export function getProjectBySlug(slug: string): Project | null {
         const fullPath = path.join(projectsDirectory, `${slug}.md`);
         const fileContents = fs.readFileSync(fullPath, "utf8");
         const matterResult = matter(fileContents);
-        const data = matterResult.data as any;
+        const data = matterResult.data as ProjectFrontmatter;
 
         let image = "/uploads/project1.jpg";
         if (data.image) {
