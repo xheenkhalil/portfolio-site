@@ -3,7 +3,7 @@ title: Gymzest Premium Gym Membership Site
 date: 2025-11-28T13:38:00.000+01:00
 summary: A full responsive gym membership website with a display of available
   services and prices of each packages. Built with Next.js and Tailwind CSS.
-category: Web Development
+category: Fullstack Web Development
 images:
   - /uploads/gymnest.png
 github: https://github.com/xheenkhalil/gymnest
