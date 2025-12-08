@@ -3,7 +3,7 @@ title: Secure Web - Abstract Web Security Platform
 date: 2025-12-08T16:43:00.000+01:00
 summary: "A simple raw HTML 5/Tailwind CSS CDN website made from pure
   imagination. No serverside application. "
-category: Data Analytics
+category: Fullstack Web Development
 images:
   - /uploads/secureweb.png
 github: https://github.com/xheenkhalil/secureweb
