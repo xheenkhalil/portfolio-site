@@ -19,7 +19,7 @@ export interface Project {
 
 interface ProjectFrontmatter {
     title?: string;
-    date?: string;
+    date?: string | Date;
     summary?: string;
     category?: string;
     image?: string;
@@ -53,7 +53,7 @@ export function getAllProjects(): Project[] {
         return {
             slug,
             title: data.title || "No Title",
-            date: data.date || new Date().toISOString(),
+            date: (data.date instanceof Date ? data.date.toISOString() : data.date) || new Date().toISOString(),
             summary: data.summary || "",
             category: data.category || "General",
             image,
@@ -100,7 +100,7 @@ export function getProjectBySlug(slug: string): Project | null {
         return {
             slug,
             title: data.title || "No Title",
-            date: data.date || new Date().toISOString(),
+            date: (data.date instanceof Date ? data.date.toISOString() : data.date) || new Date().toISOString(),
             summary: data.summary || "",
             category: data.category || "General",
             image,

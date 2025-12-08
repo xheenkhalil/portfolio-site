@@ -8,7 +8,7 @@ local_backend:
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
-publish_mode: simple  # keep simple until the UI loads; you can switch back later
+publish_mode: simple
 
 collections:
   - name: "projects"
