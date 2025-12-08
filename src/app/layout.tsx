@@ -80,6 +80,9 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
     creator: "@xenzyfer2",
   },
+  verification: {
+    google: "xcwnZ2kdayTTmnY_rGDEnVRWgEo52GZ3RIQFRZ6TD80",
+  },
 };
 
 const jsonLd = {
