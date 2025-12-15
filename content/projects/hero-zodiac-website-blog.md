@@ -5,6 +5,6 @@ summary: "An astrology website built headless with Typescript and Next.js. Used
   Tailwind V4. "
 category: Fullstack Web Development
 images:
-  - /uploads/1001163633.jpg
+  - /uploads/herozodiac.png
 visit: https://herozodiac.vercel.app
 ---
